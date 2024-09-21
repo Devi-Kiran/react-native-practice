@@ -4,7 +4,6 @@ import { Switch } from "react-native";
 function AppSwitch() {
   const [isEnabled, setIsEnabled] = useState(false);
 
-  console.log(isEnabled);
   return (
     <Switch
       style={{ margin: 20 }}

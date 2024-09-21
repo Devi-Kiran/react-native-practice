@@ -18,7 +18,7 @@ function Icon({
           width: Number(size),
           height: Number(size),
           backgroundColor,
-          borderRadius: circle ? Number(size) / 2 : 5,
+          borderRadius: circle ? Number(size) / 2 : 15,
           justifyContent: "center",
           alignItems: "center",
         },

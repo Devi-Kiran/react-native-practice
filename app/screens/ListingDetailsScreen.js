@@ -6,25 +6,26 @@ import AppText from "../components/customComponents/AppText";
 import ListItem from "../components/customComponents/ListItem";
 import colors from "../config/colors";
 
-function ListingDetailsScreen() {
+function ListingDetailsScreen({ route }) {
+  const { id, image, title, subTitle } = route.params;
+
   return (
-    <Screen style={{ backgroundColor: colors.cream }}>
+    // <Screen style={{ backgroundColor: colors.cream }}>
+    <View style={{flex: 1}}>
       <View style={styles.screenContainer}>
         <Image
           fadeDuration={1000}
           resizeMode="cover"
           source={{
-            uri: "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            uri: image,
             width: "100%",
             height: 300,
           }}
         />
 
         <View style={styles.aboutContainer}>
-          <AppText style={styles.productName}>
-            Two Assorted-color Padded Chairs
-          </AppText>
-          <Text style={styles.productPrice}>6999 /-</Text>
+          <AppText style={styles.productName}>{title}</AppText>
+          <Text style={styles.productPrice}>{subTitle}</Text>
         </View>
 
         <ListItem
@@ -34,7 +35,8 @@ function ListingDetailsScreen() {
           style={{ marginVertical: 40 }}
         />
       </View>
-    </Screen>
+      </View>
+    // </Screen>
   );
 }
 

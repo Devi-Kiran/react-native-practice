@@ -1,5 +1,8 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { StyleSheet, View, Platform, StatusBar, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import Touchables from "./app/components/fundamental-concepts/Touchables";
@@ -35,13 +38,98 @@ import AppPicker from "./app/components/customComponents/forms/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
+import NativagationConcepts from "./app/components/advanced-concepts/NativagationConcepts";
+import colors from "./app/config/colors";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigation from "./app/navigation/AppNavigation";
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const FeedNavigator = () => {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="ListingsScreen" component={ListingsScreen} />
+        <Stack.Screen
+          name="ListingDetailsScreen"
+          component={ListingDetailsScreen}
+        />
+      </Stack.Navigator>
+    );
+  };
+
+  const TabNavigator = () => {
+    return (
+      <Tab.Navigator
+        tabBarOptions={{
+          activeTintColor: colors.primary,
+          labelStyle: {
+            fontSize: 15,
+            textAlign: "center",
+          },
+        }}
+      >
+        <Tab.Screen
+          name="Home"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" size={size} color={color} />
+            ),
+          }}
+          component={FeedNavigator}
+        />
+        <Tab.Screen
+          name="EditListing"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="plus-circle"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+          component={ListingEditScreen}
+        />
+        <Tab.Screen
+          name="Account"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+          component={AccountScreen}
+        />
+      </Tab.Navigator>
+    );
+  };
+
   return (
     <View style={styles.container}>
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigation/> 
+        {/* <AuthNavigator/>  */}
+      </NavigationContainer>
+
+      {/* <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer> */}
+      {/* Navigation concepts */}
+      {/* <NativagationConcepts /> */}
+
       {/* Forms concepts */}
       {/* <RegisterScreen /> */}
-      <ListingEditScreen />
+      {/* <ListingEditScreen /> */}
       {/* <LoginScreen /> */}
 
       {/* Input components */}

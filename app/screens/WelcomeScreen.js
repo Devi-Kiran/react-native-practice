@@ -4,7 +4,7 @@ import { View, StyleSheet, ImageBackground, Image, Text } from "react-native";
 import LoginAndSignupButton from "../components/customComponents/LoginAndSignupButton";
 import colors from "../config/colors";
 
-function WelcomeScreen() {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -22,19 +22,21 @@ function WelcomeScreen() {
             uri: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png",
           }}
         />
-        <Text style={{ color: colors.primary, fontWeight: "600", fontSize: 20 }}>
+        <Text
+          style={{ color: colors.primary, fontWeight: "600", fontSize: 20 }}
+        >
           Starbucks Furnitures
         </Text>
       </View>
       <View style={[styles.buttonsContainer]}>
         <LoginAndSignupButton
           buttonText="login"
-          onPress={() => alert("login")}
+          onPress={() => navigation.navigate("LoginScreen")}
         />
         <LoginAndSignupButton
           buttonText="sign up"
           buttonColor="secondary"
-          onPress={() => alert("sign up")}
+          onPress={() => navigation.navigate("RegisterScreen")}
         />
       </View>
     </ImageBackground>

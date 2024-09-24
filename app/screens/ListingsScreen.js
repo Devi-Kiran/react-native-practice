@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList, ScrollView } from "react-native";
 
 import Screen from "../components/customComponents/Screen";
 import CardComponent from "../components/customComponents/CardComponent";
@@ -45,18 +45,18 @@ const listings = [
 
 function ListingsScreen() {
   return (
-    <Screen
-      style={{ backgroundColor: colors.cream, padding: 15, overflow: "scroll" }}
-    >
+    <Screen style={{ backgroundColor: colors.cream, padding: 15 }}>
       <FlatList
         data={listings}
         keyExtractor={(item) => String(item._id)}
         renderItem={({ item }) => {
           return (
             <CardComponent
+              id={item._id}
               image={item.image}
               title={item.title}
               subTitle={item.price + " /-"}
+              onPress={{}}
             />
           );
         }}

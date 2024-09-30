@@ -25,6 +25,15 @@ const menuItems = [
     },
     targetScreen: "Messages",
   },
+  {
+    _id: "3",
+    title: "my posts",
+    icon: {
+      name: "post",
+      backgroundColor: "violet",
+    },
+    targetScreen: "Posts",
+  },
 ];
 
 function AccountScreen({ navigation }) {

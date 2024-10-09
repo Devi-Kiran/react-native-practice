@@ -1,0 +1,74 @@
+{
+  "listings": [
+    {
+      "_id": 1,
+      "title": "Black Fabric Sectional Sofa",
+      "price": "8999",
+      "images": [
+        "https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      ]
+    },
+    {
+      "_id": 2,
+      "title": "2-seat Orange Leather Sofa",
+      "price": "5999",
+      "images": [
+        "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      ]
+    },
+    {
+      "_id": 3,
+      "title": "Brown, White, and Blue Wooden Board",
+      "price": "9999",
+      "images": [
+        "https://images.pexels.com/photos/245208/pexels-photo-245208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      ]
+    },
+    {
+      "_id": 4,
+      "title": "Two Assorted-color Padded Chairs",
+      "price": "4999",
+      "images": [
+        "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      ]
+    },
+    {
+      "_id": 5,
+      "title": "Black Mattress",
+      "price": "12999",
+      "images": [
+        "https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      ]
+    },
+    {
+      "id": 7167,
+      "images": [
+        "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FDoneWithIt-2935264d-72dd-4c34-8f19-5568a6dcaaac/ImagePicker/6e0e3538-1b59-40e1-b517-4fb040c1096a.jpeg"
+      ],
+      "title": "Hello",
+      "price": "999",
+      "category": {
+        "label": "Fans",
+        "value": 1,
+        "backgroundColor": "pink",
+        "icon": "ceiling-fan"
+      },
+      "description": "Hello ka"
+    },
+    {
+      "id": 3455,
+      "images": [
+        "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FDoneWithIt-2935264d-72dd-4c34-8f19-5568a6dcaaac/ImagePicker/0f760bad-14b5-4772-8451-038fce36c354.jpeg"
+      ],
+      "title": "Hii",
+      "price": "999",
+      "category": {
+        "label": "Fans",
+        "value": 1,
+        "backgroundColor": "pink",
+        "icon": "ceiling-fan"
+      },
+      "description": ""
+    }
+  ]
+}

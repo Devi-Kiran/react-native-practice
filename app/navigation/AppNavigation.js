@@ -44,7 +44,7 @@ function AppNavigation() {
         component={ListingEditScreen}
       />
       <Tab.Screen
-        name="AccountScreen"
+        name="Account"
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" size={size} color={color} />

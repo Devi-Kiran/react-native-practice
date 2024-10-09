@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
+// import { Image } from "react-native-expo-image-cache";
 
 import Screen from "../components/customComponents/Screen";
 import AppText from "../components/customComponents/AppText";
@@ -7,21 +8,34 @@ import ListItem from "../components/customComponents/ListItem";
 import colors from "../config/colors";
 
 function ListingDetailsScreen({ route }) {
-  const { id, image, title, subTitle } = route.params;
+  const { images, title, subTitle } = route.params;
 
   return (
     // <Screen style={{ backgroundColor: colors.cream }}>
-    <View style={{flex: 1}}>
-      <View style={styles.screenContainer}>
+    <View style={{ flex: 1 }}>
+      <View style={styles.screenContainer}> 
         <Image
           fadeDuration={1000}
           resizeMode="cover"
           source={{
-            uri: image,
+            uri: images[0],
             width: "100%",
             height: 300,
           }}
         />
+
+          {/* for cashing images */}
+        {/* <Image
+          fadeDuration={1000}
+          resizeMode="cover"
+          preview={images[0]}
+          uri={images[0]}
+          tint="dark"
+          style={{
+            width: "100%",
+            height: 300,
+          }}
+        /> */}
 
         <View style={styles.aboutContainer}>
           <AppText style={styles.productName}>{title}</AppText>
@@ -35,7 +49,7 @@ function ListingDetailsScreen({ route }) {
           style={{ marginVertical: 40 }}
         />
       </View>
-      </View>
+    </View>
     // </Screen>
   );
 }

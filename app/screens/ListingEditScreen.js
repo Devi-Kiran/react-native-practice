@@ -4,6 +4,7 @@ import * as Location from "expo-location";
 import useLocation from "../hooks/useLocation";
 
 import Screen from "../components/customComponents/Screen";
+import listingsApi from "../api/listings";
 import {
   AppForm,
   AppFormField,
@@ -12,12 +13,14 @@ import {
 } from "../components/customComponents/forms";
 import CategoryPickerItem from "../components/customComponents/CategoryPickerItem";
 import ImageInput from "../components/customComponents/forms/ImageInput";
+import UploadScreen from "./UploadScreen";
+import { Image } from "react-native";
 
 const validationSchema = object({
   title: string().required().min(1).label("Title"),
   price: number().required().min(1).label("Price").min(999).max(999999),
   category: object().nullable().required().label("Category"),
-  description: string().required().label("Description"),
+  // description: string().required().label("Description"),
   images: array()
     .min(1, "Please select at least one image")
     .max(5, "You can upload up to 3 images only"),
@@ -42,7 +45,36 @@ const options = [
 ];
 
 function ListingEditScreen() {
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+
   const location = useLocation();
+
+
+  const getProgress = progress => {
+
+    setProgress(progress);
+  }
+
+  const handleSubmit = async (listing, {resetForm}) => {
+    setUploadVisible(true)
+    try {
+      const result = await listingsApi.postListing({
+        ...listing,
+        id: Math.floor(Math.random() * 10000),
+      }, getProgress);
+
+      if (!result.ok) {
+        alert("Not Uploaded");
+      }
+
+      alert("success");
+    } catch (error) {
+      console.log(error);
+    }
+
+    resetForm()
+  };
 
   return (
     <Screen style={{ padding: 20 }}>
@@ -54,7 +86,7 @@ function ListingEditScreen() {
           category: null,
           description: "",
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <ImageInput fieldName="images" />

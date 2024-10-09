@@ -1,5 +1,7 @@
+import react, { useEffect } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { StyleSheet, View, Platform, StatusBar, Text } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -43,11 +45,24 @@ import colors from "./app/config/colors";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigation from "./app/navigation/AppNavigation";
+import OfflineNotice from "./app/components/customComponents/OfflineNotice";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem("person", JSON.stringify({ id: 1 }));
+      const result = await AsyncStorage.getItem("person");
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // storeData();
+
   const FeedNavigator = () => {
     return (
       <Stack.Navigator
@@ -116,8 +131,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <OfflineNotice />
+
       <NavigationContainer theme={navigationTheme}>
-        <AppNavigation/> 
+        <AppNavigation />
         {/* <AuthNavigator/>  */}
       </NavigationContainer>
 
@@ -212,3 +229,4 @@ const styles = StyleSheet.create({
 });
 
 // expo start -c
+// json-server --watch db.json --port 3001

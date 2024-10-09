@@ -48,7 +48,7 @@ function MyListingsScreen() {
       {getListinsgApi.error && (
         <>
           <AppText>Couldn't retrive the listings</AppText>
-          <Button title="Retry" onPress={loadPosts} />
+          {/* <Button title="Retry" onPress={loadPosts} /> */}
         </>
       )}
       {getListinsgApi.loading && (

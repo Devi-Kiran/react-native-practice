@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, FlatList, ActivityIndicator, Button } from "react-native";
 
 import Screen from "../components/customComponents/Screen";
+import AppText from "../components/customComponents/AppText";
 import postsApi from "../api/posts";
 import useApi from "../hooks/useApi";
 import Post from "../components/customComponents/Post";
@@ -14,7 +15,7 @@ function PostsScreen({ navigation }) {
     getPostsApi.request();
   }, []);
   return (
-    <Screen style={styles.container}>
+    <Screen style={styles.container}> 
       {getPostsApi.error && (
         <>
           <AppText>Couldn't retrive the listings</AppText>
